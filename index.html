@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy 16th Birthday 🎀</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Pacifico&display=swap');
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:"Cairo",sans-serif;
+    background:#fff8fb;
+    color:#5b3949;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    background:#ffe4ee;
+    filter:blur(80px);
+    top:-180px;
+    right:-180px;
+    opacity:.55;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:400px;
+    height:400px;
+    border-radius:50%;
+    background:#ffeaf2;
+    filter:blur(90px);
+    bottom:-180px;
+    left:-150px;
+    opacity:.7;
+}
+
+.heart{
+    position:fixed;
+    bottom:-30px;
+    color:#efa0bd;
+    font-size:20px;
+    opacity:.45;
+    animation:floatUp 8s linear forwards;
+    z-index:1;
+    pointer-events:none;
+}
+
+@keyframes floatUp{
+    from{
+        transform:translateY(0) rotate(0);
+        opacity:0;
+    }
+
+    15%{
+        opacity:.5;
+    }
+
+    to{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+.page{
+    width:100%;
+    max-width:850px;
+    min-height:100vh;
+    margin:auto;
+    padding:30px 17px;
+    position:relative;
+    z-index:3;
+}
+
+/* =========================
+   PASSWORD SCREEN
+========================= */
+
+#lockScreen{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.lockBox{
+    width:100%;
+    max-width:650px;
+    text-align:center;
+}
+
+.envelope{
+    width:100%;
+    height:330px;
+    background:#efa4c1;
+    position:relative;
+    overflow:hidden;
+    border-radius:3px;
+    box-shadow:
+        0 20px 50px rgba(190,90,130,.16);
+    margin-bottom:55px;
+}
+
+/* ظرف */
+.envelope::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        135deg,
+        transparent 49.5%,
+        #f8c7d9 50%
+    ) left,
+    linear-gradient(
+        225deg,
+        transparent 49.5%,
+        #f8c7d9 50%
+    ) right;
+
+    background-size:50% 100%;
+    background-repeat:no-repeat;
+}
+
+.envelopeTop{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:58%;
+
+    background:#f5b8cf;
+
+    clip-path:polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+
+    z-index:2;
+}
+
+/* الورقة */
+.letter{
+    position:absolute;
+    top:17px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:62%;
+
+    background:#fffafd;
+
+    padding:17px;
+
+    color:#513543;
+
+    font-size:27px;
+    font-weight:600;
+
+    z-index:5;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.03);
+}
+
+/* دائرة بدل الصورة */
+.photoCircle{
+    position:absolute;
+
+    width:105px;
+    height:105px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #f7c4d8 0 50%,
+            #e86d9f 51% 60%,
+            #f7b4cf 61%
+        );
+
+    border:6px solid #e675a4;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-28%);
+
+    z-index:6;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:42px;
+
+    box-shadow:0 5px 15px rgba(120,40,80,.18);
+}
+
+.lockIcon{
+    font-size:34px;
+    color:#dfacc1;
+    margin-bottom:10px;
+}
+
+.secretText{
+    font-size:12px;
+    letter-spacing:4px;
+    color:#967582;
+    margin-bottom:12px;
+}
+
+input{
+    width:100%;
+    max-width:390px;
+    height:58px;
+
+    border:0;
+    outline:0;
+
+    border-radius:35px;
+
+    background:#e5e1e4;
+
+    text-align:center;
+
+    font-family:"Cairo";
+    font-size:17px;
+
+    color:#70475a;
+
+    box-shadow:
+        inset 0 2px 8px rgba(0,0,0,.05);
+}
+
+input::placeholder{
+    color:#aaa0a5;
+}
+
+.unlock{
+    display:block;
+
+    margin:18px auto 0;
+
+    border:0;
+
+    padding:14px 58px;
+
+    border-radius:35px;
+
+    background:#e45291;
+
+    color:white;
+
+    font-family:"Cairo";
+    font-size:16px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 9px 25px rgba(220,70,135,.22);
+
+    transition:.25s;
+}
+
+.unlock:hover{
+    transform:translateY(-2px);
+}
+
+#error{
+    display:none;
+    color:#d6507e;
+    margin-top:12px;
+}
+
+/* =========================
+   MAIN PAGES
+========================= */
+
+#mainSite{
+    display:none;
+}
+
+.card{
+    background:rgba(255,255,255,.88);
+
+    border-radius:28px;
+
+    padding:30px 23px;
+
+    box-shadow:
+        0 15px 45px rgba(180,90,130,.09);
+
+    border:1px solid #f7dce7;
+
+    backdrop-filter:blur(10px);
+}
+
+.storyPage{
+    animation:pageIn .5s ease;
+}
+
+@keyframes pageIn{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.pageNumber{
+    color:#d97d9e;
+    font-size:12px;
+    letter-spacing:3px;
+    margin-bottom:25px;
+}
+
+.date{
+    font-family:Pacifico,cursive;
+    direction:ltr;
+
+    color:#b85d82;
+
+    font-size:21px;
+
+    margin-bottom:30px;
+}
+
+h1{
+    color:#713e54;
+    font-size:29px;
+    margin-bottom:22px;
+}
+
+h2{
+    color:#984d6d;
+    font-size:24px;
+    margin-bottom:20px;
+}
+
+.text{
+    font-size:17px;
+    line-height:2.2;
+    white-space:pre-line;
+}
+
+.highlight{
+    background:#ffe3ed;
+    border-radius:20px;
+
+    padding:20px;
+
+    margin:25px 0;
+
+    line-height:2;
+}
+
+.nextBtn{
+    display:block;
+
+    margin:35px auto 0;
+
+    border:1px solid #e6a0bb;
+
+    background:#fff2f7;
+
+    color:#80465e;
+
+    padding:12px 42px;
+
+    border-radius:35px;
+
+    font-family:"Cairo";
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.nextBtn:hover{
+    background:#f8cfdf;
+    transform:translateY(-2px);
+}
+
+/* =========================
+   MUSIC PLAYER
+   نفس فكرة الصورة
+========================= */
+
+.musicPlayer{
+    margin-top:30px;
+
+    background:#fff5f9;
+
+    border:1px solid #f4d4e1;
+
+    border-radius:25px;
+
+    padding:15px 15px 12px;
+
+    box-shadow:
+        0 8px 25px rgba(190,90,130,.08);
+}
+
+.musicHeader{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+/* دائرة الأغنية */
+.album{
+    width:57px;
+    height:57px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #e99abb 0 28%,
+            #f7cbdc 29% 48%,
+            #e875a4 49% 53%,
+            #f5b7cf 54%
+        );
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:white;
+
+    font-size:19px;
+}
+
+/* بيانات الأغنية */
+.songInfo{
+    flex:1;
+    min-width:0;
+}
+
+.songName{
+    font-size:15px;
+    font-weight:600;
+
+    color:#713e54;
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.artist{
+    font-size:11px;
+    color:#ad7d8e;
+
+    margin-top:2px;
+}
+
+/* رقم الأغنية */
+.songNumber{
+    font-size:11px;
+    color:#bd91a0;
+
+    direction:ltr;
+
+    white-space:nowrap;
+}
+
+/* أزرار الأغنية */
+.musicControls{
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+
+.musicButton{
+    width:35px;
+    height:35px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    color:#713e54;
+
+    font-size:14px;
+
+    cursor:pointer;
+}
+
+.playButton{
+    width:43px;
+    height:43px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#ec82ad;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 4px 12px rgba(220,90,140,.18);
+}
+
+/* السطر */
+.musicBottom{
+    display:flex;
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:11px;
+}
+
+.time{
+    font-size:9px;
+    color:#bc9ba7;
+
+    direction:ltr;
+
+    min-width:28px;
+}
+
+.progress{
+    flex:1;
+
+    height:4px;
+
+    background:#eadbe1;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+}
+
+.progressBar{
+    width:0%;
+    height:100%;
+
+    background:#e779a6;
+
+    border-radius:10px;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.final{
+    text-align:center;
+}
+
+.big16{
+    direction:ltr;
+
+    font-family:Pacifico,cursive;
+
+    font-size:95px;
+
+    color:#df6d9c;
+
+    margin:10px 0 20px;
+
+    text-shadow:
+        0 10px 25px rgba(210,80,140,.12);
+}
+
+.signature{
+    font-family:Pacifico,cursive;
+
+    direction:ltr;
+
+    font-size:23px;
+
+    color:#b85b80;
+
+    margin-top:30px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .page{
+        padding:20px 13px;
+    }
+
+    .envelope{
+        height:275px;
+    }
+
+    .letter{
+        width:64%;
+        font-size:22px;
+    }
+
+    .photoCircle{
+        width:87px;
+        height:87px;
+        font-size:34px;
+    }
+
+    h1{
+        font-size:25px;
+    }
+
+    h2{
+        font-size:22px;
+    }
+
+    .text{
+        font-size:16px;
+        line-height:2.15;
+    }
+
+    .musicPlayer{
+        padding:13px;
+    }
+
+    .musicControls{
+        gap:3px;
+    }
+
+    .musicButton{
+        width:30px;
+        height:30px;
+    }
+
+    .playButton{
+        width:39px;
+        height:39px;
+    }
+
+    .big16{
+        font-size:75px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- قلوب متحركة -->
+<div class="heart" style="left:5%;animation-delay:0s;">♡</div>
+<div class="heart" style="left:18%;animation-delay:2s;">♥</div>
+<div class="heart" style="left:33%;animation-delay:4s;">♡</div>
+<div class="heart" style="left:52%;animation-delay:1s;">♥</div>
+<div class="heart" style="left:70%;animation-delay:3s;">♡</div>
+<div class="heart" style="left:87%;animation-delay:5s;">♥</div>
+
+
+<!-- =========================
+     PASSWORD
+========================= -->
+
+<section id="lockScreen" class="page">
+
+    <div class="lockBox">
+
+        <div class="envelope">
+
+            <div class="letter">
+                جاهزة؟ 🎀
+            </div>
+
+            <div class="envelopeTop"></div>
+
+            <div class="photoCircle">
+                🎂
+            </div>
+
+        </div>
+
+        <div class="lockIcon">
+            ♧
+        </div>
+
+        <div class="secretText">
+            ENTER THE SECRET WORD
+        </div>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="✦ password ✦"
+        >
+
+        <button class="unlock" onclick="unlock()">
+            💗 Unlock 💗
+        </button>
+
+        <div id="error">
+            الباسورد غلط 😭
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     WEBSITE
+========================= -->
+
+<main id="mainSite" class="page">
+
+
+<!-- PAGE 1 -->
+
+<section class="card storyPage">
+
+    <div class="pageNumber">
+        01 / 06
+    </div>
+
+    <div class="date">
+        HAPPY 16TH BIRTHDAY
+    </div>
+
+    <h1>
+        كل سنة وانتي طيبة يا Manon 🎀
+    </h1>
+
+    <div class="text">
+عايز أقولك إن النهارده مش يوم عادي خالص،
+النهارده يوم مميز جدًا لأنه يوم ميلادك.
+
+16 سنة عدوا من عمرك،
+وإن شاء الله اللي جاي يكون أجمل بكتير من اللي فات.
+
+أتمنى كل سنة جديدة في حياتك تكون مليانة ضحك،
+ومليانة لحظات حلوة،
+ومليانة ناس بتحبك بجد.
+
+يارب كل حاجة نفسك فيها تقرب منك،
+وكل حلم بتحلمي بيه يبقى حقيقة قدامك.
+
+كل سنة وانتي بخير،
+وكل سنة وضحكتك أحلى من السنة اللي قبلها. 🤍
+    </div>
+
+    <div class="highlight">
+        🎂 النهارده بقيتي 16 سنة...
+        ودي بداية فصل جديد وجميل من حياتك.
+    </div>
+
+    <button class="nextBtn" onclick="nextPage()">
+        next →
+    </button>
+
+</section>
+
+
+<!-- PAGE 2 -->
+
+<section class="card storyPage" style="display:none">
+
+    <div class="pageNumber">
+        02 / 06
+    </div>
+
+    <h2>
+        رسالة ليكي 💌
+    </h2>
+
+    <div class="text">
+ممكن الكلام مهما كان كتير،
+برضه مش هيقدر يوصف قد إيه أتمنى ليكي الخير.
+
+أتمنى لما تزعلي تلاقي حاجة تضحكك،
+ولما الدنيا تضيق تلاقي باب جديد بيتفتح قدامك.
+
+أتمنى تفضلي دايمًا محاطة بناس بيحبوكي،
+ويفرحوا لفرحتك،
+ويقفوا جنبك وقت ما تحتاجيهم.
+
+أتمنى السنة دي تكون مختلفة،
+تكون فيها ذكريات جديدة،
+وضَحك كتير،
+وأيام تفضلي فاكرها حتى بعد سنين.
+
+وأهم حاجة...
+متنسيش أبدًا إنك تستحقي تكوني سعيدة. 🎀
+    </div>
+
+    <button class="nextBtn" onclick="nextPage()">
+        next →
+    </button>
+
+</section>
+
+
+<!-- PAGE 3 -->
+
+<section class="card storyPage" style="display:none">
+
+    <div class="pageNumber">
+        03 / 06
+    </div>
+
+    <h2>
+        16 أمنية ليكي ✨
+    </h2>
+
+    <div class="text">
+01 — أتمنى تفضلي دايمًا مبسوطة.
+02 — أتمنى كل أحلامك تتحقق.
+03 — أتمنى السنة دي تكون من أحلى سنين حياتك.
+04 — أتمنى تضحكي من قلبك كل يوم.
+05 — أتمنى كل حاجة بتضايقك تبعد عنك.
+06 — أتمنى الخير يلازمك في كل مكان.
+07 — أتمنى تفتكري دايمًا قد إيه انتي مميزة.
+08 — أتمنى تنجحي في كل حاجة نفسك فيها.
+09 — أتمنى تفضلي محاطة بناس كويسة.
+10 — أتمنى كل يوم جديد يجيب معاكي خبر حلو.
+11 — أتمنى دموعك تكون دايمًا دموع فرحة.
+12 — أتمنى السنة دي تكون بداية حاجات جميلة.
+13 — أتمنى تفضلي بنفس القلب الجميل.
+14 — أتمنى توصلي للمكان اللي بتحلمي بيه.
+15 — أتمنى تفضلي تضحكي الضحكة اللي بتحلي اليوم.
+16 — وأتمنى قبل أي حاجة... تكوني سعيدة. 🤍
+    </div>
+
+    <button class="nextBtn" onclick="nextPage()">
+        next →
+    </button>
+
+</section>
+
+
+<!-- PAGE 4 MUSIC -->
+
+<section class="card storyPage" style="display:none">
+
+    <div class="pageNumber">
+        04 / 06
+    </div>
+
+    <h2>
+        وقت الأغنية 🎧
+    </h2>
+
+    <div class="text">
+وفي وسط كل الكلام ده،
+لازم يكون فيه أغنية مرتبطة باليوم ده.
+
+شغليها وإنتي بتكملي الرسالة،
+وخليها جزء من ذكريات عيد ميلادك الـ16. 🤍
+    </div>
+
+
+    <!-- MUSIC PLAYER -->
+
+    <div class="musicPlayer">
+
+        <div class="musicHeader">
+
+            <div class="album">
+                ♪
+            </div>
+
+            <div class="songInfo">
+
+                <div class="songName">
+                    أغنية عيد ميلادك ❤️
+                </div>
+
+                <div class="artist">
+                    Special song
+                </div>
+
+            </div>
+
+            <div class="songNumber">
+                1 / 1
+            </div>
+
+        </div>
+
+
+        <div class="musicBottom">
+
+            <div class="time" id="currentTime">
+                0:00
+            </div>
+
+            <div
+                class="progress"
+                onclick="seekMusic(event)"
+            >
+                <div
+                    class="progressBar"
+                    id="progressBar"
+                ></div>
+            </div>
+
+            <div class="time" id="duration">
+                0:00
+            </div>
+
+        </div>
+
+
+        <div class="musicControls"
+             style="justify-content:center;margin-top:10px;">
+
+            <button
+                class="musicButton"
+                onclick="restartMusic()"
+            >
+                ↶
+            </button>
+
+            <button
+                class="playButton"
+                id="playButton"
+                onclick="toggleMusic()"
+            >
+                ▶
+            </button>
+
+            <button
+                class="musicButton"
+                onclick="restartMusic()"
+            >
+                ↷
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <button class="nextBtn" onclick="nextPage()">
+        next →
+    </button>
+
+</section>
+
+
+<!-- PAGE 5 -->
+
+<section class="card storyPage" style="display:none">
+
+    <div class="pageNumber">
+        05 / 06
+    </div>
+
+    <h2>
+        ولسه في كلام كتير 🎀
+    </h2>
+
+    <div class="text">
+لو وصلتي لحد هنا،
+فأنا عايزك تعرفي إن كل كلمة هنا معمولة عشان يومك.
+
+مش عايز عيد ميلادك يبقى مجرد يوم يعدي وخلاص.
+
+عايزك تفتكري الـ16 سنة دي،
+وتفتكري الضحكة،
+والكلام،
+واللحظات الصغيرة اللي ممكن تبقى بعد كده أجمل ذكريات.
+
+السنة الجديدة دي خليها سنة مختلفة.
+
+اعملي حاجات بتحبيها،
+اضحكي أكتر،
+اتعلمي حاجات جديدة،
+قربي من أحلامك،
+ومتخليش أي حاجة صغيرة تضايقك وتسرق منك فرحتك.
+
+الدنيا مش دايمًا هتبقى سهلة،
+بس دايمًا فيه يوم أحسن جاي.
+
+فخلي الـ16 بداية جديدة...
+وبداية لكل حاجة نفسك فيها. 🤍
+    </div>
+
+    <button class="nextBtn" onclick="nextPage()">
+        last page →
+    </button>
+
+</section>
+
+
+<!-- PAGE 6 -->
+
+<section class="card storyPage final" style="display:none">
+
+    <div class="pageNumber">
+        06 / 06
+    </div>
+
+    <div class="big16">
+        16
+    </div>
+
+    <h1>
+        Happy Birthday Manon 🎂
+    </h1>
+
+    <div class="text">
+كل سنة وانتي طيبة يا Manon،
+وكل سنة وانتي بخير وسعادة.
+
+يارب الـ16 تكون سنة مختلفة عن كل اللي فات،
+سنة فيها فرحة،
+ونجاح،
+وأحلام بتتحقق،
+وذكريات حلوة كتير.
+
+يارب كل يوم جديد في حياتك
+يبقى أحلى من اللي قبله.
+
+عيد ميلاد سعيد يا Manon 🤍
+
+وكل سنة وانتي بخير. 🎀
+    </div>
+
+    <div class="signature">
+        Made with love 🎀
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     AUDIO
+========================= -->
+
+<audio id="music" src="song.mp3"></audio>
+
+
+<script>
+
+/* =========================
+   PASSWORD
+========================= */
+
+let currentPage = 0;
+
+const pages =
+document.querySelectorAll(".storyPage");
+
+function unlock(){
+
+    const password =
+    document.getElementById("password").value;
+
+    const error =
+    document.getElementById("error");
+
+    if(password === "Manon"){
+
+        document.getElementById("lockScreen")
+        .style.display = "none";
+
+        document.getElementById("mainSite")
+        .style.display = "block";
+
+        pages[currentPage]
+        .style.display = "block";
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }else{
+
+        error.style.display = "block";
+
+        setTimeout(()=>{
+            error.style.display = "none";
+        },2000);
+
+    }
+}
+
+
+/* Enter */
+document
+.getElementById("password")
+.addEventListener("keydown",function(e){
+
+    if(e.key === "Enter"){
+        unlock();
+    }
+
+});
+
+
+/* =========================
+   NEXT PAGE
+========================= */
+
+function nextPage(){
+
+    pages[currentPage]
+    .style.display = "none";
+
+    currentPage++;
+
+    if(currentPage >= pages.length){
+        currentPage = pages.length - 1;
+    }
+
+    pages[currentPage]
+    .style.display = "block";
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   MUSIC
+========================= */
+
+const music =
+document.getElementById("music");
+
+const playButton =
+document.getElementById("playButton");
+
+const progressBar =
+document.getElementById("progressBar");
+
+const currentTime =
+document.getElementById("currentTime");
+
+const duration =
+document.getElementById("duration");
+
+
+function toggleMusic(){
+
+    if(music.paused){
+
+        music.play();
+
+        playButton.innerHTML = "Ⅱ";
+
+    }else{
+
+        music.pause();
+
+        playButton.innerHTML = "▶";
+
+    }
+
+}
+
+
+function restartMusic(){
+
+    music.currentTime = 0;
+
+    music.play();
+
+    playButton.innerHTML = "Ⅱ";
+
+}
+
+
+/* الوقت */
+
+function formatTime(seconds){
+
+    if(isNaN(seconds)){
+        return "0:00";
+    }
+
+    let minutes =
+    Math.floor(seconds / 60);
+
+    let secs =
+    Math.floor(seconds % 60);
+
+    if(secs < 10){
+        secs = "0" + secs;
+    }
+
+    return minutes + ":" + secs;
+}
+
+
+music.addEventListener("loadedmetadata",function(){
+
+    duration.innerHTML =
+    formatTime(music.duration);
+
+});
+
+
+/* التقدم */
+
+music.addEventListener("timeupdate",function(){
+
+    if(music.duration){
+
+        let percent =
+        (music.currentTime / music.duration) * 100;
+
+        progressBar.style.width =
+        percent + "%";
+
+        currentTime.innerHTML =
+        formatTime(music.currentTime);
+
+    }
+
+});
+
+
+/* الضغط على الشريط */
+
+function seekMusic(event){
+
+    if(!music.duration) return;
+
+    const rect =
+    event.currentTarget.getBoundingClientRect();
+
+    const percent =
+    (event.clientX - rect.left) /
+    rect.width;
+
+    music.currentTime =
+    percent * music.duration;
+
+}
+
+
+music.addEventListener("ended",function(){
+
+    playButton.innerHTML = "▶";
+
+    progressBar.style.width = "0%";
+
+    currentTime.innerHTML = "0:00";
+
+});
+
+
+/* =========================
+   HEARTS
+========================= */
+
+function createHeart(){
+
+    const heart =
+    document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerHTML =
+    Math.random() > .5 ? "♡" : "♥";
+
+    heart.style.left =
+    Math.random() * 100 + "%";
+
+    heart.style.animati
